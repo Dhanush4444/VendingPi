@@ -60,7 +60,8 @@ if __name__ == '__main__':
         mode = f['mode']
         user = f['user']
         selected = f['selected']
-        if mode == 'Card':
+        phoneBuy = f['phoneBuy']
+        if mode == 'Card' and phoneBuy == False:
             gp.output(Mode, 1)
             if gp.input(cardSuccess) == 1:
                 f = updateWalletBalance(user, priceArray[int(selected) - 1])
