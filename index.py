@@ -1,6 +1,8 @@
 import requests as req
 
-url = 'http://localhost:3000'
+# url = 'http://localhost:3000'
+
+url = 'https://vendingpi.herokuapp.com'
 
 cokePrice = '20'
 LaysPrice = '10'
@@ -9,6 +11,10 @@ DairyMilk = '30'
 
 priceArray = [cokePrice, LaysPrice, KitKatPrice, DairyMilk]
 
+def setMode(mode):
+    r  = req.post(url + '/api' + '/set' + '/mode/' + mode)
+    d = r.text
+    return  d
 
 def getJson():
     r = req.get(url + '/' + 'api' + '/getjson')
@@ -38,13 +44,14 @@ if __name__ == '__main__':
     # print(getJson())
     # updateItemCount('Coke')
     # getMode()
-    while True:
-        f = getMode()
-        mode = f['mode']
-        user = f['user']
-        selected = f['selected']
-        if mode == 'Card':
-            updateWalletBalance(user, priceArray[int(selected)-1])
-            break
-        else:
-            print('Coin Mode')
+   print(setMode('Dazz'))
+    # while True:
+    #     f = getMode()
+    #     mode = f['mode']
+    #     user = f['user']
+    #     selected = f['selected']
+    #     if mode == 'Card':
+    #         updateWalletBalance(user, priceArray[int(selected)-1])
+    #         break
+    #     else:
+    #         print('Coin Mode')
